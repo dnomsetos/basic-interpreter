@@ -3,10 +3,11 @@
     #include <cerrno>
     #include <climits>
     #include <cstdlib>
-    #include <cstring> // strerror
+    #include <cstring>
     #include <string>
     #include <iostream>
-    #include "driver.hh"
+
+    #include "include/driver.hh"
     #include "parser.hh"
 %}
 
@@ -37,7 +38,6 @@ int   -?[0-9]+
 blank [ \r\n]
 
 %{
-  // Code run each time a pattern is matched.
   #define YY_USER_ACTION UpdateLocation();
 %}
 
@@ -45,10 +45,8 @@ blank [ \r\n]
 
 
 %{
-  // A handy shortcut to the location held by the driver.
   yy::location& loc = driver.location;
   if (driver.location_debug) {
-  // Code run each time yylex is called.
     std::cerr << "BEFORE " << loc << std::endl;
   }
   // loc.step();

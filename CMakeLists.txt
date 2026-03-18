@@ -7,7 +7,7 @@ find_package(FLEX REQUIRED)
 set(CMAKE_C_COMPILER "/usr/bin/clang")
 set(CMAKE_CXX_COMPILER "/usr/bin/clang++")
 
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++20 -O2")
+set(CMAKE_CXX_STANDARD 23)
 
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
@@ -15,7 +15,6 @@ BISON_TARGET(
     MyParser
     ${CMAKE_SOURCE_DIR}/parser.y
     ${CMAKE_SOURCE_DIR}/parser.cpp
-    COMPILE_FLAGS
     DEFINES_FILE
     ${CMAKE_SOURCE_DIR}/parser.hh
 )
@@ -30,8 +29,9 @@ ADD_FLEX_BISON_DEPENDENCY(MyScanner MyParser)
 
 add_executable(
     interpreter
-    main.cpp
-    driver.cpp
+    src/main.cpp
+    src/driver.cpp
+    src/ast.cpp
     ${BISON_MyParser_OUTPUTS}
     ${FLEX_MyScanner_OUTPUTS}
 )
