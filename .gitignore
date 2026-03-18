@@ -4,3 +4,5 @@ scanner.cpp
 parser.hh
 location.hh
 parser.gv
+.clang-format
+.cache/

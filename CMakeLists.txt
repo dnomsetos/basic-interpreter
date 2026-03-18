@@ -9,6 +9,8 @@ set(CMAKE_CXX_COMPILER "/usr/bin/clang++")
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++20 -O2")
 
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+
 BISON_TARGET(
     MyParser
     ${CMAKE_SOURCE_DIR}/parser.y
