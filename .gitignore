@@ -1,0 +1,8 @@
+build/
+parser.cpp
+scanner.cpp
+parser.hh
+location.hh
+parser.gv
+.clang-format
+.cache/
